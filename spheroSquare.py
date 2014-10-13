@@ -4,8 +4,9 @@ import time					# this lines imports time utils
 
 
 def doTheDance():
-	speed=0x88
+	speed=0x44
 	sleepTime=1
+	s.set_heading(1)
 	s.roll(speed,1)
 	time.sleep(sleepTime)
 	s.roll(speed,90)
@@ -14,6 +15,7 @@ def doTheDance():
 	time.sleep(sleepTime)
 	s.roll(speed,270)
 	time.sleep(sleepTime)
+	s.stop()
 
 
 s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") #create Sphero controller

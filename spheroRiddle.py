@@ -1,6 +1,7 @@
 from random import randint
 from sphero import core
 import time	
+import thread
 
 # this program is a simple implementation of a game,
 # where the user is supposed to guess the number
@@ -67,3 +68,4 @@ def play_next():
 game()
 while play_next():
 	game()
+
