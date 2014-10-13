@@ -8,7 +8,7 @@ Make sure that Python is installed on your machine, as well as Python Sphero cli
 ```sh
 pip install sphero
 ```
-Add Sphero device to the OS (double tap the Orb to wake it up and look it up on your computer). Then, on the top of each source code file, find the line:
+Add Sphero device to the OS (double tap the Orb to wake it up and pair it to your PC via bluetooth). Then, on the top of each source code file, find the line:
 ```python
 s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") 
 ```

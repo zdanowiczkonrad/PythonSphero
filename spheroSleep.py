@@ -1,5 +1,5 @@
 from sphero import core
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") #create Sphero controller
+s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
 print "Connecting to Sphero..."
-s.connect()	#initialize connection
+s.connect()
 s.sleep()
