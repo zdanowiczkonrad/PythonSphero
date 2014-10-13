@@ -18,10 +18,6 @@ def doTheDance():
 	time.sleep(sleepTime)
 	s.stop()
 
-
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") #create Sphero controller
-print "Connecting to Sphero..."
-s.connect()	#initialize connection
 i=3
 while i>0:
 	doTheDance()
@@ -29,7 +25,7 @@ while i>0:
 	i-=1
 
 print "The end. Sphero goes to bed."
-#s.sleep()
+s.sleep()
 
 
 
