@@ -9,12 +9,15 @@ print "połączyłem się ze Sphero :)"
 Przyszła pora na coś ciekawszego :) Zobacz co dzieje się w tym programie,
 i wyjaśnij co robi funkcja roll!
 """
+time.sleep(7)
 # zapal tylnia diodke
 s.set_back_led_output(255)
-predkosc=0
+predkosc = 60
+czas = 2
 
-for obrot in [1,120,240,359,1]:
-	s.roll(predkosc,obrot)
-	print "kulek ustawiony na kąt %s" % obrot
-	time.sleep(0.00001)
+s.roll(predkosc,1)
+time.sleep(czas)
+s.roll(predkosc,180)
+time.sleep(czas)
+
 print "koniec."
