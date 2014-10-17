@@ -16,8 +16,4 @@ while iterations > 0:
 	time.sleep(0.1)
 	iterations -= 1
 
-print "The end. Sphero goes to bed."
-s.sleep()
-
-
 
