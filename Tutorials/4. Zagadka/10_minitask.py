@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 from random import randint
-from sphero import core
-import time
 """
 Świetnie! Pamiętacie jeszcze o Sphero? 
 
@@ -15,16 +16,14 @@ zielony: R=0, G=255, B=0
 pomarańczowy: R=255, G=120, B=0
 Możesz użyć funkcji zrob_kolko(), która wykonuje obrót!
 """
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
 
 # liczba, którą zna komputer
 tajemnicza_liczba = randint(1,100)
 
 def zrob_kolko():
 	for obrot in [1,120,240,359,1]:
-		s.roll(0,obrot)
-		time.sleep(0.00001)
+		sphero.roll(0, obrot)
+		sphero.czekaj(0.0001)
 
 def podpowiedz(tajemnicza_liczba, proba):
 	if tajemnicza_liczba > proba:

@@ -21,7 +21,6 @@ for obrot in kroki_taneczne:
 	sphero.roll(predkosc, obrot)
 	sphero.czekaj(czas)
 
-# pamiętaj o stop na końcu!
 print "stop!"
 sphero.stop()
 

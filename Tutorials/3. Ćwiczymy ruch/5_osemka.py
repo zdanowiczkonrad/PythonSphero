@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
-from sphero import core
-import time
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
-print "połączyłem się ze Sphero :)"
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 
 """
 Na podstawie programu, w którym Sphero jeździ w kółko,
-napisz program aby sphero zatoczyło ósemkę!
-podpowiedź: wywołaj funkcję jazda z argumentem "reversed(range(1,359))"
+napisz program, który toczy Sphero w znak ósemki!
+podpowiedź: funkcja reversed(lista) przyjmuje listę i zwraca
+	listę z elementami w odwrotnej kolejności, np.
+		reversed([1, 2, 3])=[3, 2, 1]
 """
 
-def jazda(sphero,lista_obrotow):		
+def jazda(sphero, lista_obrotow):		
 	predkosc = 70
-	czas = 0.1
+	czas = 0.2
 	for obrot in lista_obrotow:
-		if obrot % 30 == 0: #to jest do usuniecia, interwal ustawic w range'u
-			sphero.roll(predkosc,obrot)
-			time.sleep(czas)
+		print "obrot o kat " + str(obrot)
+		sphero.roll(predkosc,obrot)
+		sphero.czekaj(czas)
 
-# kółko
-jazda(s,range(1,359))
+# wywolaj funkcje jazda
+jazda(sphero, range(1, 359, 40))
+print "---"
 # wywołaj jeszcze raz tę funkcję, ale z odwróconą listą obrotów
 
 
 # pamiętaj o stop na końcu!
 print "stop!"
-s.stop()
+sphero.stop()
 
 print "koniec."
