@@ -1,23 +1,25 @@
 # -*- coding: utf-8 -*-
-from sphero import core
-import time
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
-print "połączyłem się ze Sphero :)"
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 
 """
-Przyszła pora na coś ciekawszego :) Zobacz co dzieje się w tym programie,
-i wyjaśnij co robi funkcja roll!
+1. Przeanalizuj ten program i narysuj na kartce tor,
+	po którym Twoim zdaniem przejedzie Sphero.
+2. Następnie uruchom go i porównaj wyniki z przypuszczeniami
 """
-time.sleep(7)
-# zapal tylnia diodke
-s.set_back_led_output(255)
+
 predkosc = 60
 czas = 2
 
-s.roll(predkosc,1)
-time.sleep(czas)
-s.roll(predkosc,180)
-time.sleep(czas)
+# bumerang
+sphero.roll(predkosc, 1)
+sphero.czekaj(czas)
+
+sphero.roll(predkosc, 180)
+sphero.czekaj(czas)
+
+print "stop!"
+sphero.stop()
 
 print "koniec."

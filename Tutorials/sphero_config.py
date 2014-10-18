@@ -19,4 +19,6 @@ print "[i] Sphero skonfigurowane poprawnie. Jeszcze chwilkę..."
 time.sleep(timeout_na_polaczenie)
 # wyłącz stabilizację
 # sphero.set_stabilization(True)
+sphero.set_rotation_rate(0xFF)
 print "[i] Połączono ze Sphero."
+

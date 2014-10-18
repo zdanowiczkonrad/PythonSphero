@@ -1,35 +1,41 @@
 # -*- coding: utf-8 -*-
-from sphero import core
-import time
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
-print "połączyłem się ze Sphero :)"
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 
 """
 1. Umieść napisany przez Ciebie kod w pętli,
-aby Sphero trzykrotnie przejechało w tą i z powrotem!
+aby Sphero trzykrotnie przejechało w tę i z powrotem!
 2. Z każdym kolejnym powtórzeniem, zmień prędkość Sphero!
- Wykorzystaj do tego tablicę "predkosci"
-4. Z każdym kolejnym powtórzeniem, zmień kolor Sphero!
- Wykorzystaj do tego słownik "kolory" i funkcję set_rgb()
+ Wykorzystaj do tego listę "predkosci"
+3. Z każdym kolejnym powtórzeniem, zmień kolor Sphero!
+ Wykorzystaj do listę kolory. funkcję set_rgb()
 4. Dodaj własny krok z marchewkowym kolorem i prędkością 128
+	- rozszerz listę predkosci o 128, oraz dodaj do tablicy kolory
+	kolejny element z własnym kolorem
 """
-predkosci = [100,40,80]
-kolory = [
-{'r': 150, 'g': 210, 'b': 54},
-{'r': 251, 'g': 61, 'b': 10},
-{'r': 70, 'g': 51, 'b': 211}]
+predkosci = [100, 40, 80]
 
-predkosc = 80
-czas = 1.8
+kolory = [
+[150, 210, 54],
+[251, 61, 10],
+[70, 51, 211]
+]
+
+czas = 2
 
 # umieść ten kod w pętli
+# ----------------------------------------------------
+# 1. ustaw pierwszy kolor z tablicy kolory
+sphero.set_rgb(kolory[0][0], kolory[0][1], kolory[0][2])
 
-s.roll(predkosc,1)
-time.sleep(czas)
-s.roll(predkosc,180)
-time.sleep(czas)
-
-# zatrzymujemy kulka
-s.stop()
+# 2. zatocz się z prędkością 100
+sphero.roll(predkosci[0], 1)
+sphero.czekaj(czas)
+# 3. wielki powrót
+sphero.roll(predkosci[0], 180)
+sphero.czekaj(czas)
+# ----------------------------------------------------
+print "stop!"
+sphero.stop()
 print "koniec."
