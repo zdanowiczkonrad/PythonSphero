@@ -41,6 +41,8 @@ Each small task is to be done one by one, beginning from the first task. To star
 
 Those examples will guide you through communicating with Sphero, modifying its state (colors or backled light), rotating it and rolling. Last task is also a good practice for Python beginners, where a goal is to implement a game of guessing the number, step by step using feature-oriented programming, where each new functionality is added to old ones in each and only step.
 
+In order to promote an awesome Polish language, all comments and namings are Polish words ;) A jeżeli rozumiesz co tutaj jest napisane, zapraszam Cię na świetne szkolenia dla początkujących programistów Pythona (i nie tylko) organizowanych przez Geek Girls Carrots, gdzie na żywo prowadzimy uczestników przez te zadania.
+
 ###Notes
 
 This software has been tested on OS X 10.9 and Sphero 2.0. I also use Python 2.7 legacy ```raw_input```, so be aware of that when your Python > 3 explodes. Fore more spherexperience check out awesome educational materials on the official Sphero's [Education site](http://www.gosphero.com/education/) that partially inspired the code snippets here. Aw, did I mention that [Sphero](http://www.gosphero.com/) is really cool for playing and learning and (playing and learning)?
