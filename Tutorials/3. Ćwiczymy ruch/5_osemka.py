@@ -15,7 +15,7 @@ def jazda(sphero,lista_obrotow):
 	predkosc = 70
 	czas = 0.1
 	for obrot in lista_obrotow:
-		if obrot % 30 == 0:
+		if obrot % 30 == 0: #to jest do usuniecia, interwal ustawic w range'u
 			sphero.roll(predkosc,obrot)
 			time.sleep(czas)
 

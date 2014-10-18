@@ -14,7 +14,7 @@ jako argumenty kulkę i listę obrotów i wykona ruch!
 
 predkosc = 50
 czas = 0.3
-lista_ruchow=[1,180]
+lista_ruchow=[1,180] # gladkie wprowadzenie w wyciagniecie zmiennej
 
 for obrot in lista_ruchow:
 	s.roll(predkosc,obrot)

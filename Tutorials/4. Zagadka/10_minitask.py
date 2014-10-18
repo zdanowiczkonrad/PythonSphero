@@ -8,6 +8,7 @@ import time
 Dodaj teraz kod, który zaświeci Sphero na zielono i zrobi obrót,
 jeżeli gracz zgadnie liczbę, za każdą zaś błędną odpowiedź, Sphero 
 zamiga 3 razy na pomarańczowo!
+Extra task: im strzał jest bliżej wyniku, niech Sphero świeci się jaśniej!
 
 Podpowiedzi:
 zielony: R=0, G=255, B=0

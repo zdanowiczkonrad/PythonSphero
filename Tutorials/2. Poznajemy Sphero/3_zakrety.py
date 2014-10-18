@@ -1,26 +1,24 @@
 # -*- coding: utf-8 -*-
-from sphero import core
-import time
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
-print "połączyłem się ze Sphero :)"
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 
 """
-Dodaj kolejny ruch tak, aby Sphero poruszło się w kształcie litery L
+Dodaj kolejny ruch tak, aby Sphero poruszyło się w kształcie litery L
 """
 
 predkosc = 50
 czas = 4
 
-s.roll(predkosc,1)
-time.sleep(czas)
+sphero.roll(predkosc, 1)
+sphero.czekaj(czas)
 
-print "uwaga, zakręt!"
+
 # tutaj dodaj kolejny ruch pod kątem 90 stopni
+print "uwaga, zakręt!"
 
-
-# pamiętaj o stop na końcu!
+# pamiętajmy o stop na końcu!
 print "stop!"
-s.stop()
+sphero.stop()
 
 print "koniec."

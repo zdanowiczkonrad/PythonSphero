@@ -8,7 +8,7 @@ lub False jeżeli tajemnicza liczba nie została trafiona.
 tajemnicza_liczba = randint(1,100)
 
 def zgadnij(numer_proby):
-	proba = int(raw_input("Zgadnij liczbę (próba #%s)" % (numer_proby+1)))
+	proba = int(raw_input("Zgadnij liczbę (próba #%s)" % (numer_proby+1))) # concat
 	if proba is tajemnicza_liczba:
 		print "Zwycięstwo!"
 		

@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
-# trochę magii - odcinek 1
-from sphero import core
-import time
-
-# trochę magii - odcinek 2 - połącz się ze Sphero
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-s.connect()
-print "połączyłem się ze Sphero :)"
+import sys
+sys.path.append("..")
+from sphero_config import sphero
 
 """
 Teraz spróbuj ustawić własne trzy kolory Sphero!
@@ -18,13 +13,14 @@ Teraz spróbuj ustawić własne trzy kolory Sphero!
 # GREEN		0-255
 # BLUE		0-255
 # spróbuj różnych kombinacji!
-s.set_rgb(0,0,0)
-time.sleep(5)
 
-s.set_rgb(0,0,0)
-time.sleep(5)
+sphero.set_rgb(0, 0, 0)
+sphero.czekaj(5)
 
-s.set_rgb(0,0,0)
-time.sleep(5)
+sphero.set_rgb(0, 0, 0)
+sphero.czekaj(5)
+
+sphero.set_rgb(0, 0, 0)
+sphero.czekaj(5)
 
 print "koniec."
