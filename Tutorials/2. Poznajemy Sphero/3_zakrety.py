@@ -4,7 +4,10 @@ sys.path.append("..")
 from sphero_config import sphero
 
 """
-Dodaj kolejny ruch tak, aby Sphero poruszyło się w kształcie litery L
+1. Dodaj kolejny ruch tak, aby Sphero
+	poruszyło się w kształcie litery L
+2. Dodaj jeszcze kilka ruchów
+3. Możesz poeksperymentować z wartościami prędkości i czasu
 """
 
 predkosc = 50

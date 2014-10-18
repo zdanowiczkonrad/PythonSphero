@@ -8,7 +8,7 @@ nazwa_sphero = "/dev/tty.Sphero-WYW-AMP-SPP"
 # dla windowsa : "COM-3"
 # dla linuxa : sparowac MAC adres z linkiem w /dev/
 # timeout na połączenie
-timeout_na_polaczenie = 7
+timeout_na_polaczenie = 10
 # utwórz Sphero, które będzie używane w kodzie
 sphero = core.Sphero(nazwa_sphero)
 # nawiąż połączenie
