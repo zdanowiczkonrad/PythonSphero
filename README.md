@@ -4,6 +4,9 @@ This repository contains materials for programming [Sphero](http://www.gosphero.
 
 Directory ```tutorials``` contains a complete guide that introduces each Sphero function step by step with explanation, hints, scaffolding code and microtasks, meanwhile ```examples``` is a place, where fully functional and standalone examples are placed for your experiments.
 
+##Note
+We'll soon move on to a new Python Sphero API made by [Karol Szuster](https://github.com/karol-szuster) - [kulka](https://github.com/karol-szuster/kulka)
+
 ##Configuration
 
 Make sure that Python is installed on your machine, as well as Python Sphero client module:
