@@ -1,31 +1,27 @@
-from sphero import core
+from __future__ import print_function
+from kulka import Kulka
 import time
 
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-print "Connecting to Sphero..."
-s.connect()
 
-def doTheDance():
-	speed = 0x88
-	sleepTime = 1
-	s.roll(speed,1)
-	time.sleep(sleepTime)
-	s.roll(speed,90)
-	time.sleep(sleepTime)
-	s.roll(speed,180)
-	time.sleep(sleepTime)
-	s.roll(speed,270)
-	time.sleep(sleepTime)
-	s.stop()
-
-i=3
-while i>0:
-	doTheDance()
-	time.sleep(0.1) #sleep 1 seconds
-	i-=1
-
-print "The end. Sphero goes to bed."
-s.sleep()
+ADDR = 'XX:XX:XX:XX:XX:XX'
 
 
+def do_the_dance(kulka):
+    speed = 0x88
+    sleep_time = 1
 
+    for angle in [1, 90, 180, 270]:
+        kulka.roll(speed, angle)
+        time.sleep(sleep_time)
+
+    kulka.roll(0, 0)
+
+
+def main():
+    with Kulka(ADDR) as kulka:
+        for _ in range(3):
+            do_the_dance(kulka)
+            time.sleep(0.1)
+
+        print("The end. Sphero goes to bed.")
+        kulka.sleep()

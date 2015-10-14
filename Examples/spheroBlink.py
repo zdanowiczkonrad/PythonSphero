@@ -1,29 +1,22 @@
-import thread
-import time
-from sphero import core
+from kulka import Kulka
 import random
+import time
 
-blink_rate = 1
 
-sphero = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") #create Sphero controller
-print "Connecting to Sphero..."
-sphero.connect()	#initialize connection
+ADDR = 'XX:XX:XX:XX:XX:XX'
 
-def start_blinking(sphero,delay):
-	count = 0
-	while count < 5:
-		global blink_rate
-		blink_rate-=0.05
-		blink_rate=abs(blink_rate)
-		sphero.set_rgb(random.randint(0,255),random.randint(0,255),random.randint(0,255))
-		time.sleep(blink_rate)
-		sphero.set_rgb(0,0,0)
-		time.sleep(blink_rate)
 
-try:
-   thread.start_new_thread(start_blinking, (sphero, 2) )
-except:
-   print "Error: unable to start thread"
+def main():
+    with Kulka(ADDR) as kulka:
+        kulka.set_inactivity_timeout(3600)
+        blink_rate = 1
 
-while 1:
-   pass
+        for _ in range(5):
+            blink_rate = abs(blink_rate - 0.05)
+            kulka.set_rgb(random.randint(0, 255), random.randint(0, 255),
+                          random.randint(0, 255))
+            time.sleep(blink_rate)
+            kulka.set_rgb(0, 0, 0)
+            time.sleep(blink_rate)
+
+main()
