@@ -1,22 +1,30 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append("..")
-from sphero_config import sphero
+from __future__ import print_function
+from kulka import Kulka
+import time
 
 """
-Przyszła pora na coś ciekawszego :)
-Uruchom ten program oraz przedyskutujcie,
-co robi funkcja
-	roll(predkosc, obrot)!
+Przyszła pora na coś ciekawszego :) Uruchom ten program oraz
+przedyskutujcie, co robi funkcja
+
+>>> roll(predkosc, obrot)
 """
-# zapal tylnią diodkę, aby było wiadomo gdzie jest "tył" kulki
-sphero.set_back_led_output(255)
 
-predkosc = 0
 
-for obrot in [1, 120, 240, 359, 1]:
-	sphero.roll(predkosc, obrot)
-	print "Sphero obrócone do kąta " + str(obrot)
-	sphero.czekaj(0.01)
+ADDR = 'XX:XX:XX:XX:XX:XX'
+PREDKOSC = 0
 
-print "koniec."
+
+with Kulka(ADDR) as kulka:
+    # zapal tylnią diodkę, aby było wiadomo gdzie jest "tył" kulki
+    kulka.set_back_led_output(255)
+
+
+    for obrot in [1, 120, 240, 359, 1]:
+        kulka.roll(PREDKOSC, obrot)
+        print("Sphero obrócone do kąta " + str(obrot))
+        time.sleep(0.01)
+
+    kulka.roll(0, 0)
+
+    print("koniec.")

@@ -1,25 +1,33 @@
-from sphero import core
+from kulka import Kulka
 import time
 
-s = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP")
-print "Connecting to Sphero..."
-s.connect()
 
-speed = 0x88
-sleep_time = 0.1 
+ADDR = 'XX:XX:XX:XX:XX:XX'
 
-def make_a_step(current_angle):
-	s.roll(speed,current_angle)
-	time.sleep(sleep_time)
 
-def make_a_circle(steps):
-	rotate_by = int(360/steps)
-	current_angle = 1
-	i = 0
-	while i < steps:
-		make_a_step(current_angle%360)
-		current_angle += rotate_by
-		i += 1
+STEPS = 10
+SPEED = 0x30
+SLEEP_TIME = 0.3
 
-steps=10
-make_a_circle(steps)
+
+def make_a_step(kulka, current_angle):
+    kulka.roll(SPEED, current_angle)
+    time.sleep(SLEEP_TIME)
+    kulka.roll(0, current_angle)
+
+
+def make_a_circle(kulka, steps):
+    rotate_by = 360 // steps
+    current_angle = 1
+
+    for _ in range(steps):
+        make_a_step(kulka, current_angle % 360)
+        current_angle += rotate_by
+
+
+def main():
+    with Kulka(ADDR) as kulka:
+        make_a_circle(kulka, STEPS)
+
+
+main()

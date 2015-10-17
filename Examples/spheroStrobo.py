@@ -1,15 +1,19 @@
-import thread
+from kulka import Kulka
 import time
-from sphero import core
-import random
 
-sphero = core.Sphero("/dev/tty.Sphero-OOB-AMP-SPP") #create Sphero controller
-print "Connecting to Sphero..."
-sphero.connect()	#initialize connection
 
-blink_rate=0.001
-for i in range(0,10):
-	sphero.set_rgb(255,255,255)
-	time.sleep(blink_rate)
-	sphero.set_rgb(0,0,0)
-	time.sleep(blink_rate)
+ADDR = 'XX:XX:XX:XX:XX:XX'
+
+
+def main():
+    with Kulka(ADDR) as kulka:
+        blink_rate = 0.001
+
+        for _ in range(10):
+            kulka.set_rgb(255, 255, 255)
+            time.sleep(blink_rate)
+            kulka.set_rgb(0, 0, 0)
+            time.sleep(blink_rate)
+
+
+main()

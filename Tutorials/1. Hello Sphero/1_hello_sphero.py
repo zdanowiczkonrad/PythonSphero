@@ -1,28 +1,34 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append("..")
-from sphero_config import sphero
+from __future__ import print_function
+from kulka import Kulka
+import time
+
 
 """
-Cześć! To Twój pierwszy program Sphero. Uruchom go,
-wywołując w konsoli następującą komendę:
+Cześć! To Twój pierwszy program Sphero. Uruchom go, wywołując w
+konsoli następującą komendę:
 
-> python 1_hello_sphero.py
+    $ python 1_hello_sphero.py
 
 I zaobseruj co się dzieje z Kuleczką.
 """
 
-# nadaj Sphero kolor
-sphero.set_rgb(255, 0, 0)
-print "czerwono!"
-sphero.czekaj(5)
 
-sphero.set_rgb(0, 255, 0)
-print "zielono!"
-sphero.czekaj(5)
+ADDR = 'XX:XX:XX:XX:XX:XX'
 
-sphero.set_rgb(0, 0, 255)
-print "niebiesko!"
-sphero.czekaj(5)
 
-print "koniec."
+with Kulka(ADDR) as kulka:
+    # nadaj Sphero kolor
+    kulka.set_rgb(255, 0, 0)
+    print("czerwono!")
+    time.sleep(5)
+
+    kulka.set_rgb(0, 255, 0)
+    print("zielono!")
+    time.sleep(5)
+
+    kulka.set_rgb(0, 0, 255)
+    print("niebiesko!")
+    time.sleep(5)
+
+    print("koniec.")

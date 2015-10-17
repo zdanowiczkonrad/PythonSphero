@@ -1,27 +1,30 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append("..")
-from sphero_config import sphero
+from __future__ import print_function
+from kulka import Kulka
+import time
+
 
 """
-1. Dodaj kolejny ruch tak, aby Sphero
-	poruszyło się w kształcie litery L
+1. Dodaj kolejny ruch tak, aby Sphero poruszyło się w kształcie litery L
 2. Dodaj jeszcze kilka ruchów
 3. Możesz poeksperymentować z wartościami prędkości i czasu
 """
 
-predkosc = 50
-czas = 4
 
-sphero.roll(predkosc, 1)
-sphero.czekaj(czas)
+ADDR = 'XX:XX:XX:XX:XX:XX'
+PREDKOSC = 50
+CZAS = 4
 
 
-# tutaj dodaj kolejny ruch pod kątem 90 stopni
-print "uwaga, zakręt!"
+with Kulka(ADDR) as kulka:
+    kulka.roll(PREDKOSC, 1)
+    time.sleep(CZAS)
 
-# pamiętajmy o stop na końcu!
-print "stop!"
-sphero.stop()
+    # tutaj dodaj kolejny ruch pod kątem 90 stopni
+    print("uwaga, zakręt!")
 
-print "koniec."
+    # pamiętajmy o stop na końcu!
+    print("stop!")
+    kulka.roll(0, 0)
+
+    print("koniec.")

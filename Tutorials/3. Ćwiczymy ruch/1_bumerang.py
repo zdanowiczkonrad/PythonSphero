@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append("..")
-from sphero_config import sphero
+from __future__ import print_function
+from kulka import Kulka
+import time
 
 """
-1. Przeanalizuj ten program i narysuj na kartce tor,
-	po którym Twoim zdaniem przejedzie Sphero.
+1. Przeanalizuj ten program i narysuj na kartce tor, po którym Twoim
+   zdaniem przejedzie Sphero.
 2. Następnie uruchom go i porównaj wyniki z przypuszczeniami
 """
 
-predkosc = 60
-czas = 2
 
-# bumerang
-sphero.roll(predkosc, 1)
-sphero.czekaj(czas)
+ADDR = 'XX:XX:XX:XX:XX:XX'
+PREDKOSC = 60
+CZAS = 2
 
-sphero.roll(predkosc, 180)
-sphero.czekaj(czas)
 
-print "stop!"
-sphero.stop()
+with Kulka(ADDR) as kulka:
+    # bumerang
+    kulka.roll(PREDKOSC, 1)
+    time.sleep(CZAS)
 
-print "koniec."
+    kulka.roll(PREDKOSC, 180)
+    time.sleep(CZAS)
+
+    print("stop!")
+    kulka.roll(0, 0)
+
+    print("koniec.")

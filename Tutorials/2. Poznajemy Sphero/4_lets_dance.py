@@ -1,27 +1,31 @@
 # -*- coding: utf-8 -*-
-import sys
-sys.path.append("..")
-from sphero_config import sphero
+from __future__ import print_function
+from kulka import Kulka
+import time
+
 
 """
 Sphero tańczy tak, jak mu zagrasz!
 
 1. Uruchom ten program i zobacz co się stanie
-2. Dopisz kolejne dwa "kroki taneczne" - dodaj dwa elementy
-	do listy kroki_taneczne
+2. Dopisz kolejne dwa "kroki taneczne" - dodaj dwa elementy do listy
+   KROKI_TANECZNE
 """
 
-predkosc = 70
-czas = 1
 
-kroki_taneczne = [22, 235, 120, 230, 350]
+ADDR = 'XX:XX:XX:XX:XX:XX'
+PREDKOSC = 70
+CZAS = 1
+KROKI_TANECZNE = [22, 235, 120, 230, 350]
 
-for obrot in kroki_taneczne:
-	print "jadę pod kątem " + str(obrot)
-	sphero.roll(predkosc, obrot)
-	sphero.czekaj(czas)
 
-print "stop!"
-sphero.stop()
+with Kulka(ADDR) as kulka:
+    for obrot in KROKI_TANECZNE:
+        print("jadę pod kątem " + str(obrot))
+        kulka.roll(PREDKOSC, obrot)
+        time.sleep(CZAS)
 
-print "koniec."
+    print("stop!")
+    kulka.roll(0, 0)
+
+    print("koniec.")
