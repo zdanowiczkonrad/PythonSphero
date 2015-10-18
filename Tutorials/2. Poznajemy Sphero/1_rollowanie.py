@@ -17,7 +17,7 @@ PREDKOSC = 0
 
 with Kulka(ADDR) as kulka:
     # zapal tylnią diodkę, aby było wiadomo gdzie jest "tył" kulki
-    kulka.set_back_led_output(255)
+    kulka.set_back_led(255)
 
 
     for obrot in [1, 120, 240, 359, 1]:
